@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Seat Layout</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+
+        .seat{
+        width:70px;
+        height:70px;
+        margin:10px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:8px;
+        color:white;
+        font-weight:bold;
+        }
+
+        .available{
+        background:green;
+        }
+
+        .occupied{
+        background:red;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <h2>Library Seat Layout</h2>
+
+    <div class="d-flex flex-wrap">
+
+        <div th:each="seat : ${seats}"
+             class="seat"
+             th:classappend="${seat.available} ? 'available' : 'occupied'">
+
+            <span th:text="${seat.seatNumber}"></span>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
